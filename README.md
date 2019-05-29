@@ -22,10 +22,10 @@ git clone https://github.com/oktadeveloper/okta-vue-books-pwa-example.git
 cd okta-vue-books-pwa-example
 ```
 
-This will get a copy of the project installed locally. To install all of its dependencies and start the app, run:
+This will get a copy of the project installed locally. To install all of its dependencies, run:
  
 ```bash
-npm install && vue serve
+npm install
 ```
 
 ### Create a New OIDC App in Okta
@@ -46,6 +46,14 @@ Vue.use(Auth, {
   scope: 'openid profile email'
 });
 ```
+
+Run the app with:
+
+```bash
+vue serve
+```
+
+And log in at `http://localhost:8080`. 
 
 ## Links
 
