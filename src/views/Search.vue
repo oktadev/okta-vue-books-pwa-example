@@ -17,7 +17,7 @@
         <md-table-head>Pub. Year</md-table-head>
         <md-table-head>View</md-table-head>
       </md-table-row>
-      <md-table-row v-for="book in books">
+      <md-table-row v-for="book in books" v-bind:key="book.key">
         <md-table-cell>{{book.title}}</md-table-cell>
         <md-table-cell>{{book.author_name && book.author_name.join(', ')}}</md-table-cell>
         <md-table-cell md-numeric>{{book.first_publish_year}}</md-table-cell>
@@ -27,32 +27,28 @@
   </div>
 </template>
 
-<script>
-const baseUrl = 'http://openlibrary.org';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import axios from 'axios';
 
-const searchData = {
-  books: [],
-  query: ''
-}
+@Component
+export default class Search extends Vue {
+  baseUrl = 'http://openlibrary.org';
+  books = [];
+  query = '';
 
-export default {
-  data: function (){
-    return searchData;
-  },
-  methods: {
-    search() {
-      this.$http.get(baseUrl+'/search.json', {params: {title: this.query}}).then((response) => {
-        this.books = response.data.docs;
-      })
-    },
-    viewDetails(book) {
-      this.$router.push({ path: 'details', query: {
-        title: book.title,
-        authors: book.author_name && book.author_name.join(', '),
-        year: book.first_publish_year,
-        cover_id: book.cover_edition_key
-      }});
-    }
+  async search() {
+    const response = await axios.get(this.baseUrl + `/search.json?title=${this.query}`);
+    this.books = await response.data.docs;
+  }
+
+  viewDetails(book: any) {
+    this.$router.push({ path: 'details', query: {
+      title: book.title,
+      authors: book.author_name && book.author_name.join(', '),
+      year: book.first_publish_year,
+      cover_id: book.cover_edition_key
+    }});
   }
 }
 </script>
@@ -65,7 +61,6 @@ export default {
 }
 
 .input-group-field {
-  max-width: 600px;
   margin-right: 0;
 }
 
