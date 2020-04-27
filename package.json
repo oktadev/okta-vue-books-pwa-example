@@ -7,8 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@okta/okta-vue": "^1.1.0",
-    "@types/okta__okta-vue": "^1.0.2",
+    "@okta/okta-vue": "^2.0.0",
+    "@types/okta__okta-vue": "^1.2.0",
     "@types/vue-material": "git+https://github.com/calebsander/vue-material-types.git",
     "axios": "^0.18.0",
     "axios-extensions": "^3.0.4",
