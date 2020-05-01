@@ -42,7 +42,7 @@ Set the `issuer` and copy the `clientId` into `src/router.ts`.
 Vue.use(Auth, {
   issuer: 'https://{yourOktaDomain}/oauth2/default',
   client_id: '{clientId}',
-  redirect_uri: window.location.origin + '/implicit/callback',
+  redirect_uri: window.location.origin + '/callback',
 });
 ```
 

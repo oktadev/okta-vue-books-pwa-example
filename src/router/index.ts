@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+
 import Auth from '@okta/okta-vue';
 
 Vue.use(Auth, {
-  issuer: 'https://dev-133320.okta.com/oauth2/default',
-  client_id: '0oao1nlkkf7j7KC7f356',
-  redirect_uri: window.location.origin + '/implicit/callback',
+  issuer: 'https://micah.okta.com/oauth2/ause30t3cb0dH2EEq1t7',
+  client_id: '0oae3lifh6SKP5cbk1t7',
+  redirect_uri: window.location.origin + '/callback',
 });
+
 Vue.use(Router)
 
 const router = new Router({
@@ -16,7 +18,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: () => import(/* webpackChunkName: "search" */ '../views/Home.vue')
     },
     {
       path: '/search',
@@ -24,7 +26,7 @@ const router = new Router({
       meta: {
         requiresAuth: true,
       },
-      component: () => import(/* webpackChunkName: "search" */ './views/Search.vue')
+      component: () => import(/* webpackChunkName: "search" */ '../views/Search.vue')
     },
     {
       path: '/details',
@@ -32,10 +34,10 @@ const router = new Router({
       meta: {
         requiresAuth: true,
       },
-      component: () => import(/* webpackChunkName: "details" */ './views/Details.vue')
+      component: () => import(/* webpackChunkName: "details" */ '../views/Details.vue')
     },
     {
-      path: '/implicit/callback',
+      path: '/callback',
       component: Auth.handleCallback()
     }
   ]
