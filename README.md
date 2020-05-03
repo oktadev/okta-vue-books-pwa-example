@@ -36,7 +36,7 @@ If you don't have an Okta developer account, please [create one](https://develop
 3. Select **Single-Page App** > **Next**. 
 4. Give the application a name and click **Done**.
 
-Set the `issuer` and copy the `clientId` into `src/router.ts`.
+Set the `issuer` and copy the `clientId` into `src/router/index.ts`.
 
 ```typescript
 Vue.use(Auth, {
