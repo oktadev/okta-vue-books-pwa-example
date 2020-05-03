@@ -33,8 +33,9 @@ npm install
 If you don't have an Okta developer account, please [create one](https://developer.okta.com/signup/). Then, create a new OIDC app on Okta:
 
 1. Log in to your developer account, navigate to **Applications** > **Add Application**.
-3. Select **Single-Page App** > **Next**. 
-4. Give the application a name and click **Done**.
+2. Select **Single-Page App** > **Next**. 
+3. Give the application a name and set the redirect uri to: **http://localhost:8080/callback**.
+4. click **Done**.
 
 Set the `issuer` and copy the `clientId` into `src/router/index.ts`.
 
